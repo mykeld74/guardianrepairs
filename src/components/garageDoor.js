@@ -9,12 +9,15 @@ const DoorContainer = styled.div`
   text-align: center;
   grid-gap: 20px;
   padding: 20px;
+  width: 100%;
+  max-width: 1170px;
+  margin: auto;
 `
 
 const Door = styled.div`
   .imgContainer {
     position: relative;
-    min-height: 30vw;
+    min-height: 30%;
     display: flex;
     align-items: center;
     justify-content: center;

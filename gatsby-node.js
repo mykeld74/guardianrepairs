@@ -25,13 +25,7 @@ exports.createPages = ({ graphql, actions }) => {
       }
 
       result.data.allWordpressPage.edges.forEach(({ node }) => {
-        if (
-          node.slug != 'home' &&
-          node.slug != 'volunteer-opportunities' &&
-          node.slug != 'missional-communities' &&
-          node.slug != 'facility-rentals' &&
-          node.slug != 'contact-us'
-        ) {
+        if (node.slug != 'home' && node.slug != 'replacement') {
           createPage({
             path: node.slug,
             component: path.resolve('./src/templates/page.js'),
