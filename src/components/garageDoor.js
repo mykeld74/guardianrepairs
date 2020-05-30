@@ -4,20 +4,25 @@ import Img from 'gatsby-image'
 
 const DoorContainer = styled.div`
   margin-top: 20px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+  display: flex;
+  justify-content: space-between;
   text-align: center;
-  grid-gap: 20px;
+
   padding: 20px;
   width: 100%;
   max-width: 1170px;
   margin: auto;
+  @media (max-width: 500px) {
+    flex-wrap: wrap;
+  }
 `
 
 const Door = styled.div`
+  width: calc(50% - 20px);
+  margin: 0 10px;
   .imgContainer {
     position: relative;
-    min-height: 30%;
+
     display: flex;
     align-items: center;
     justify-content: center;
