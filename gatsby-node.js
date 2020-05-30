@@ -16,13 +16,6 @@ exports.createPages = ({ graphql, actions }) => {
               }
             }
           }
-          allWordpressPost {
-            edges {
-              node {
-                slug
-              }
-            }
-          }
         }
       `
     ).then(result => {
@@ -49,16 +42,6 @@ exports.createPages = ({ graphql, actions }) => {
             },
           })
         }
-      })
-
-      result.data.allWordpressPost.edges.forEach(({ node }) => {
-        createPage({
-          path: `posts/${node.slug}`,
-          component: path.resolve('./src/templates/post.js'),
-          context: {
-            slug: node.slug,
-          },
-        })
       })
 
       resolve()
