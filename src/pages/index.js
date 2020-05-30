@@ -1,20 +1,16 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
 import BackgroundImage from 'gatsby-background-image'
 import styled from 'styled-components'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import { Container } from '../components/containers'
+import { Repair, Replace, Estimate, Opener } from '../images/icons'
 
-const StyledImg = styled(Img)`
-  width: 100%;
-`
 const HeroBanner = styled(BackgroundImage)`
   width: 100vw;
   height: 50vh;
   background-position: 50% 15%;
-  background-color: #0f0;
   display: flex;
   align-items: center;
   color: #fff;
@@ -30,7 +26,16 @@ const HeroBanner = styled(BackgroundImage)`
 `
 
 const TextContainer = styled(Container)`
-  margin-top: 3vh;
+  margin-top: 1vh;
+`
+
+const IconContainer = styled(Container)`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  @media (max-width: 500px) {
+    flex-wrap: wrap;
+  }
 `
 
 const IndexPage = ({ data }) => (
@@ -40,7 +45,7 @@ const IndexPage = ({ data }) => (
       fluid={data.wordpressPage.featured_media.localFile.childImageSharp.fluid}
     >
       <Container>
-        <h3 className="tagLine">{data.wordpressSiteMetadata.description}</h3>
+        <h3 className="tagLine">{data.wordpressPage.title}</h3>
       </Container>
     </HeroBanner>
     <TextContainer
@@ -49,6 +54,12 @@ const IndexPage = ({ data }) => (
     <TextContainer>
       <h3>What type of service do you need?</h3>
     </TextContainer>
+    <IconContainer>
+      <Replace />
+      <Opener />
+      <Repair />
+      <Estimate />
+    </IconContainer>
   </Layout>
 )
 

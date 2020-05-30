@@ -69,16 +69,6 @@ const Header = ({ siteTitle, siteDesc }) => (
         <h2 className="garageDoors">Garage Doors</h2>
       </LogoText>
     </Logo>
-    <div className="navContainer">
-      <nav className="primary-nav">
-        <Link to="/" activeClassName="active">
-          Home
-        </Link>
-        <Link to="/blog" activeClassName="active">
-          Blog
-        </Link>
-      </nav>
-    </div>
   </StyledHeader>
 )
 
