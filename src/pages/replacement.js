@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import { Container } from '../components/containers'
-import GarageDoor from '../components/garageDoor'
+import GarageDoors from '../components/garageDoors'
 import SEO from '../components/seo'
 
 const Replacement = ({ data }) => (
@@ -16,7 +16,7 @@ const Replacement = ({ data }) => (
         }}
       />
     </Container>
-    <GarageDoor doors={data.allWordpressWpGarageDoor.edges} />
+    <GarageDoors doors={data.allWordpressWpGarageDoor.edges} />
   </Layout>
 )
 
