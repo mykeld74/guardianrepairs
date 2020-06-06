@@ -1,55 +1,44 @@
 import React from 'react'
+import { motion } from 'framer-motion'
 import styled from 'styled-components'
-import Img from 'gatsby-image'
 
-const DoorContainer = styled.div`
-  margin-top: 20px;
-  display: flex;
-  justify-content: space-between;
-  text-align: center;
-  flex-wrap: wrap;
-  padding: 20px;
+const DoorContainer = styled(motion.div)`
+  box-sizing: border-box;
   width: 100%;
-  max-width: 1170px;
-  margin: auto;
+  background-color: #eee;
+  border-radius: 20px;
+  overflow: hidden;
   @media (max-width: 500px) {
-    flex-wrap: wrap;
+    width: calc(100% - 40px);
   }
 `
 
-const Door = styled.div`
-  width: calc(50% - 20px);
-  margin: 0 10px;
-  .imgContainer {
-    position: relative;
+const door = {
+  hidden: {
+    scale: 0,
+    opacity: 0,
+  },
+  show: {
+    scale: 1,
+    opacity: 1,
+    transition: {
+      duration: 0.75,
+    },
+  },
+  hover: {
+    scale: 1.025,
+    backgroundColor: '#ddd',
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #333;
-    width: 100%;
-    .gatsby-image-wrapper {
-      position: initial !important;
-      width: 100%;
-    }
-  }
-`
+    cursor: 'pointer',
+  },
+}
 
-const GarageDoor = ({ doors }) => (
-  <DoorContainer>
-    {doors.map(door => (
-      <Door key={door.node.wordpress_id}>
-        <div className={'imgContainer'} key={door.node.featured_media.id}>
-          <Img
-            fluid={door.node.featured_media.localFile.childImageSharp.fluid}
-            alt={door.node.title}
-            key={door.node.featured_media.id}
-          />
-        </div>
-        <h2>{door.node.title}</h2>
-      </Door>
-    ))}
-  </DoorContainer>
-)
+const Door = ({ children }) => {
+  return (
+    <DoorContainer className="profile" whileHover="hover" variants={door}>
+      {children}
+    </DoorContainer>
+  )
+}
 
-export default GarageDoor
+export default Door
