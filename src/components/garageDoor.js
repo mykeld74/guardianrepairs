@@ -7,7 +7,7 @@ const DoorContainer = styled.div`
   display: flex;
   justify-content: space-between;
   text-align: center;
-
+  flex-wrap: wrap;
   padding: 20px;
   width: 100%;
   max-width: 1170px;

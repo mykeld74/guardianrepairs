@@ -29,37 +29,17 @@ export const query = graphql`
     allWordpressWpGarageDoor {
       edges {
         node {
-          title
           slug
+          title
+          id
           wordpress_id
           acf {
-            wordpress_16_foot_no_window {
-              localFile {
-                childImageSharp {
-                  fluid {
-                    ...GatsbyImageSharpFluid_withWebp
-                  }
-                }
-              }
-            }
-            wordpress_16_foot_window_1 {
-              localFile {
-                childImageSharp {
-                  fluid {
-                    ...GatsbyImageSharpFluid_withWebp
-                  }
-                }
-              }
-            }
-            wordpress_8_foot_windows_1 {
-              localFile {
-                childImageSharp {
-                  fluid {
-                    ...GatsbyImageSharpFluid_withWebp
-                  }
-                }
-              }
-            }
+            available_colors
+            door_type
+            glass_options
+            interior_skin
+            r_value
+            window_options
           }
           featured_media {
             localFile {
@@ -68,7 +48,6 @@ export const query = graphql`
                   ...GatsbyImageSharpFluid_withWebp
                 }
               }
-              id
             }
           }
         }
