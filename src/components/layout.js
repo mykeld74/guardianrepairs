@@ -5,8 +5,8 @@ import styled from 'styled-components'
 import Header from './header'
 import { MotionNav } from './nav/MotionNav'
 import Modal from './modal'
-import './nav/nav.css'
-import './layout.css'
+import './nav/nav.scss'
+import './layout.scss'
 
 const PageContent = styled.div`
   flex: auto;

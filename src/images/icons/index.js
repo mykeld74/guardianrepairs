@@ -47,7 +47,7 @@ export const Repair = () => (
 )
 
 export const Replace = () => (
-  <ServiceType to="/replacement">
+  <ServiceType to="/replacement/">
     <Icon>
       <svg viewBox="0 0 100 125">
         <g>
