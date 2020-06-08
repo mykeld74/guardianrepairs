@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 import Img from 'gatsby-image'
 import { motion } from 'framer-motion'
 import Styled from 'styled-components'
 import Door from './garageDoor'
+import { useOpenCard } from '../hooks/useOpenCard'
 
 const DoorWrapper = Styled(motion.div)`
   box-sizing: border-box;
@@ -33,19 +34,32 @@ const staggerDoors = {
   hover: {},
 }
 const GarageDoors = ({ doors }) => {
+  const refs = useRef([])
+  const { isOpen, open, bind } = useOpenCard(false)
+
   return (
     <DoorWrapper variants={staggerDoors} initial="hidden" animate="show">
       {doors.map(door => (
-        <Door key={door.node.wordpress_id}>
-          <div className={'imgContainer'} key={door.node.featured_media.id}>
-            <Img
-              fluid={door.node.featured_media.localFile.childImageSharp.fluid}
-              alt={door.node.title}
-              key={door.node.featured_media.id}
-            />
-          </div>
-          <h2>{door.node.title}</h2>
-        </Door>
+        <div {...bind} isopen={isOpen}>
+          <Door
+            key={door.node.wordpress_id}
+            ref={refs.current[door.node.wordpress_id]}
+          >
+            <div className={`imgContainer`} key={door.node.featured_media.id}>
+              <Img
+                fluid={door.node.featured_media.localFile.childImageSharp.fluid}
+                alt={door.node.title}
+                key={door.node.featured_media.id}
+              />
+            </div>
+            <h2>{door.node.title}</h2>
+            {isOpen && (
+              <div>
+                <p>R-Value: {door.node.acf.r_value}</p>
+              </div>
+            )}
+          </Door>
+        </div>
       ))}
     </DoorWrapper>
   )

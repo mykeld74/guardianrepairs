@@ -31,12 +31,22 @@ const door = {
 
     cursor: 'pointer',
   },
+  closed: {
+    position: 'relative',
+  },
+  open: {
+    position: 'absolute',
+    top: '10vh',
+    left: '5vw',
+    width: '90vw',
+    zIndex: '1000',
+  },
 }
 
 const Door = ({ children }) => {
   return (
     <DoorContainer className="profile" whileHover="hover" variants={door}>
-      {children}
+      <div>{children}</div>
     </DoorContainer>
   )
 }
