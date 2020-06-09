@@ -119,10 +119,22 @@ const Layout = ({ children }) => {
       <Modal isVisible={isContactVisible} setIsVisible={setIsContactVisible}>
         <h2>Contact Us</h2>
         <ContactForm>
-          <input name="name" type="text" placeholder="Name" />
-          <input namd="subject" type="text" placeholder="Subject" />
-          <select name="service">
-            <option selected disabled>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            placeholder="Name"
+            aria-label="Name"
+          />
+
+          <input
+            name="subject"
+            type="text"
+            placeholder="Subject"
+            aria-label="Subject"
+          />
+          <select name="service" defaultValue="tos">
+            <option disabled value="tos">
               Type of service:
             </option>
             <option value="Replacement">Replacment</option>
@@ -130,7 +142,11 @@ const Layout = ({ children }) => {
             <option value="Opener">Opener</option>
             <option value="Quote">Free Estimate</option>
           </select>
-          <textarea name="message" placeholder="Message" />
+          <textarea
+            name="message"
+            placeholder="Message"
+            aria-label="Your message here"
+          />
           <button type="submit">Submit</button>
         </ContactForm>
       </Modal>
