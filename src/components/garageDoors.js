@@ -1,11 +1,10 @@
 import React, { useRef, useEffect } from 'react'
-import Img from 'gatsby-image'
-import { motion } from 'framer-motion'
-import Styled from 'styled-components'
-import Door from './garageDoor'
-import { useOpenCard } from '../hooks/useOpenCard'
 
-const DoorWrapper = Styled(motion.div)`
+import { motion } from 'framer-motion'
+import styled from 'styled-components'
+import Door from './garageDoor'
+
+const DoorWrapper = styled(motion.div)`
   box-sizing: border-box;
   background: #fff;
   display: grid;
@@ -16,11 +15,10 @@ const DoorWrapper = Styled(motion.div)`
   padding: 0 40px;
   align-content: flex-start;
   justify-items: stretch;
-  @media (max-width: 500px){
+  @media (max-width: 500px) {
     padding: 90px 5px 40px;
   }
-  @media all and (-ms-high-contrast: none),
-  (-ms-high-contrast: active){
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
     display: flex;
     flex-wrap: wrap;
     align-items: space-around;
@@ -33,33 +31,23 @@ const staggerDoors = {
   },
   hover: {},
 }
+
 const GarageDoors = ({ doors }) => {
   const refs = useRef([])
-  const { isOpen, open, bind } = useOpenCard(false)
 
   return (
     <DoorWrapper variants={staggerDoors} initial="hidden" animate="show">
       {doors.map(door => (
-        <div {...bind} isopen={isOpen}>
-          <Door
-            key={door.node.wordpress_id}
-            ref={refs.current[door.node.wordpress_id]}
-          >
-            <div className={`imgContainer`} key={door.node.featured_media.id}>
-              <Img
-                fluid={door.node.featured_media.localFile.childImageSharp.fluid}
-                alt={door.node.title}
-                key={door.node.featured_media.id}
-              />
-            </div>
-            <h2>{door.node.title}</h2>
-            {isOpen && (
-              <div>
-                <p>R-Value: {door.node.acf.r_value}</p>
-              </div>
-            )}
-          </Door>
-        </div>
+        <Door
+          key={door.node.wordpress_id}
+          ref={refs.current[door.node.wordpress_id]}
+          opentext={door.node.acf.r_value}
+          title={door.node.title}
+          divKey={door.node.featured_media.id}
+          imgKey={door.node.featured_media.id}
+          fluid={door.node.featured_media.localFile.childImageSharp.fluid}
+          alt={door.node.title}
+        />
       ))}
     </DoorWrapper>
   )

@@ -1,6 +1,8 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import styled from 'styled-components'
+import Img from 'gatsby-image'
+import { useOpenCard } from '../hooks/useOpenCard'
 
 const DoorContainer = styled(motion.div)`
   box-sizing: border-box;
@@ -43,10 +45,21 @@ const door = {
   },
 }
 
-const Door = ({ children }) => {
+const Door = ({ title, opentext, imgKey, divKey, alt, fluid }) => {
+  const { isOpen, open, bind } = useOpenCard(false)
   return (
     <DoorContainer className="profile" whileHover="hover" variants={door}>
-      <div>{children}</div>
+      <div {...bind} isopen={isOpen}>
+        <div className={`ingContainer`} key={divKey}>
+          <Img key={imgKey} alt={alt} fluid={fluid} />
+        </div>
+        <h2>{title}</h2>
+        {isOpen && (
+          <div>
+            <p r-value>R-Value: {opentext}</p>
+          </div>
+        )}
+      </div>
     </DoorContainer>
   )
 }
