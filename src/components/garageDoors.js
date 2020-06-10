@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef } from 'react'
 import { motion } from 'framer-motion'
 import styled from 'styled-components'
 import Door from './garageDoor'
@@ -10,6 +10,8 @@ const DoorWrapper = styled(motion.div)`
   grid-gap: 40px;
   align-items: center;
   width: 100%;
+  max-width: 1400px;
+  margin: auto;
   padding: 0 40px;
   align-content: flex-start;
   justify-items: stretch;
@@ -44,6 +46,11 @@ const GarageDoors = ({ doors }) => {
           imgKey={door.node.featured_media.id}
           fluid={door.node.featured_media.localFile.childImageSharp.fluid}
           alt={door.node.title}
+          doorType={door.node.acf.door_type}
+          glass={door.node.acf.glass_options}
+          interior={door.node.acf.interior_skin}
+          windows={door.node.acf.window_options}
+          colors={door.node.acf.available_colors}
         />
       ))}
     </DoorWrapper>

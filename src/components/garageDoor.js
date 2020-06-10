@@ -1,8 +1,23 @@
 import React from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import styled from 'styled-components'
 import Img from 'gatsby-image'
 import { useOpenCard } from '../hooks/useOpenCard'
+import { InfoContainer } from '../components/containers'
+
+const TitleBlock = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+  p {
+    transition: color 0.3s ease-in-out;
+  }
+  p:hover {
+    color: red;
+  }
+`
 const DoorContainer = styled(motion.div)`
   box-sizing: border-box;
   width: 100%;
@@ -13,75 +28,114 @@ const DoorContainer = styled(motion.div)`
     width: calc(100% - 40px);
   }
 `
+const DoorBlock = styled(motion.div)`
+  background: #eee;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+`
+
+const Overlay = styled.div`
+  background: rgba(0, 0, 0, 0.7);
+  width: 100vw;
+  height: 100vh;
+  z-index: 1750;
+  position: fixed;
+  top: 0;
+  left: 0;
+`
 const door = {
   hidden: {
     scale: 0,
     opacity: 0,
+    transition: {
+      duration: 0.25,
+    },
   },
   show: {
-    position: 'relative',
-    zIndex: 0,
-    width: '100%',
-    top: 'auto',
-    left: 'auto',
     scale: 1,
     opacity: 1,
     transition: {
-      duration: 0.75,
+      duration: 0.5,
     },
   },
   hover: {
     scale: 1.025,
-    backgroundColor: '#ddd',
     cursor: 'pointer',
   },
   closed: {
     position: 'relative',
     zIndex: 0,
     width: '100%',
+    height: 'auto',
+    overflow: 'hidden',
     top: 'auto',
     left: 'auto',
     scale: 1,
-    opacity: 1,
-    transition: {
-      duration: 0.0,
-    },
-  },
-  active: {
-    position: 'absolute',
-    top: '10vh',
-    left: '5vw',
-    width: '90vw',
-    zIndex: '1000',
+    border: 'none',
     transition: {
       duration: 0,
     },
   },
+  active: {
+    position: 'fixed',
+    width: '90vw',
+    top: '2vh',
+    left: '5vw',
+    height: '96vh',
+    overflow: 'scroll',
+    zIndex: '2000',
+    border: '2px solid #333',
+    transition: {
+      duration: 0,
+    },
+  },
+  showOverlay: {},
 }
-const Door = ({ title, rValue, imgKey, divKey, alt, fluid }) => {
+const Door = ({
+  title,
+  rValue,
+  imgKey,
+  divKey,
+  alt,
+  fluid,
+  doorType,
+  glass,
+  interior,
+  windows,
+  colors,
+}) => {
   const { isOpen, open, bind } = useOpenCard(false)
 
   return (
-    <AnimatePresence>
-      <DoorContainer
-        className="profile"
-        whileHover="hover"
+    <DoorContainer {...bind} isopen={isOpen} initial="hidden" variants={door}>
+      <DoorBlock
+        initial="show"
         animate={!isOpen ? 'closed' : 'active'}
         variants={door}
-        {...bind}
-        isopen={isOpen}
       >
         <div className={`imgContainer`} key={divKey}>
           <Img key={imgKey} alt={alt} fluid={fluid} />
         </div>
-        <h2>{title}</h2>
-        {isOpen && (
-          <div>
-            <p r-value>R-Value: {rValue}</p>
-          </div>
-        )}
-      </DoorContainer>
-    </AnimatePresence>
+        <InfoContainer>
+          <TitleBlock>
+            <h2>{title}</h2>
+            {!isOpen && <p>Learn More</p>}
+          </TitleBlock>
+          {isOpen && (
+            <div>
+              <p>R-Value: {rValue}</p>
+              <ul>
+                {colors.map(color => (
+                  <li key={color}>{color}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </InfoContainer>
+      </DoorBlock>
+      {isOpen && <Overlay />}
+    </DoorContainer>
   )
 }
 export default Door

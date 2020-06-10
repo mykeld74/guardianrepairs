@@ -6,3 +6,8 @@ export const Container = styled.div`
   margin: 0 auto;
   padding-top: 20px;
 `
+
+export const InfoContainer = styled.div`
+  width: 90%;
+  margin: 20px 5%;
+`
