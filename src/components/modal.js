@@ -17,7 +17,7 @@ const ModalContainer = Styled.div`
 
 const ModalOverlay = Styled(motion.div)`
   width: 100vw;
-  height: 300vh;
+  min-height: 400vh;
   background: rgba(255, 255, 255, 0.8);
   position: absolute;
   top: 0;
@@ -25,6 +25,9 @@ const ModalOverlay = Styled(motion.div)`
   display: flex;
   align-items: center;
   justify-content: center;
+  &.dark{
+    background: rgba(0, 0, 0, 0.8);
+  }
 `
 
 const ModalContent = Styled(motion.div)`
@@ -73,7 +76,20 @@ const ModalContent = Styled(motion.div)`
     }
   }
 `
-const Modal = ({ isVisible, setIsVisible, children }) => {
+
+const DoorModalContent = Styled(motion.div)`
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 90vw;
+  border-radius: 20px;
+  margin: 5vh auto;
+  z-index: 5;
+  background: #fff;
+  border-radius: 20px;
+  z-index: 9999;
+  overflow: hidden;
+`
+export const Modal = ({ isVisible, setIsVisible, children }) => {
   return (
     <AnimatePresence>
       {isVisible && (
@@ -102,4 +118,28 @@ const Modal = ({ isVisible, setIsVisible, children }) => {
   )
 }
 
-export default Modal
+export const DoorModal = ({ isVisible, setIsVisible, children }) => {
+  return (
+    <AnimatePresence>
+      {isVisible && (
+        <ModalContainer>
+          <ModalOverlay
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="dark"
+          />
+
+          <DoorModalContent
+            initial={{ opacity: 0, y: '100vh' }}
+            animate={{ opacity: 1, y: '0' }}
+            exit={{ opacity: 0, y: '100vh' }}
+            transition={{ duration: 0.33 }}
+          >
+            {children}
+          </DoorModalContent>
+        </ModalContainer>
+      )}
+    </AnimatePresence>
+  )
+}

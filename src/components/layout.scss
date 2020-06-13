@@ -1,3 +1,5 @@
+$blue: #1c628e;
+
 html {
   font-family: 'Mavin Pro', sans-serif;
   -ms-text-size-adjust: 100%;
@@ -265,8 +267,10 @@ h3 {
   font-family: 'Oswald', Avenir, Arial, sans-serif;
   font-weight: bold;
   text-rendering: optimizeLegibility;
-  font-size: clamp(24px, 3vw, 36px);
-  line-height: 1.1;
+  font-size: clamp(20px, 2.8vw, 28px);
+  &.blue {
+    color: $blue;
+  }
 }
 h4 {
   margin-left: 0;
@@ -281,8 +285,11 @@ h4 {
   font-family: 'Oswald', Avenir, Arial, sans-serif;
   font-weight: bold;
   text-rendering: optimizeLegibility;
-  font-size: clamp(18px, 2vw, 28px);
+  font-size: clamp(18px, 2vw, 24px);
   line-height: 1.4;
+  &.blue {
+    color: $blue;
+  }
 }
 h5 {
   margin-left: 0;
