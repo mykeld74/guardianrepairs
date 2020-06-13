@@ -22,6 +22,7 @@ const HeroBanner = styled(BackgroundImage)`
     -webkit-text-stroke-color: #000;
     text-shadow: 2px 2px 5px #777;
     text-align: center;
+    line-height: 1.3;
   }
 `
 
