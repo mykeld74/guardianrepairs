@@ -16,7 +16,7 @@ const DoorWrapper = styled(motion.div)`
   align-content: flex-start;
   justify-items: stretch;
   @media (max-width: 500px) {
-    padding: 90px 5px 40px;
+    padding: 0 5px 40px;
   }
   @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
     display: flex;
