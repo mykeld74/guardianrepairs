@@ -7,6 +7,8 @@ import { MotionNav } from './nav/MotionNav'
 import Modal from './modal'
 import './nav/nav.scss'
 import './layout.scss'
+import { useOpenCard } from '../hooks/useOpenCard'
+import PageWrapper from './AppWrapper'
 
 const PageContent = styled.div`
   flex: auto;
@@ -78,7 +80,8 @@ const Footer = styled.footer`
 `
 
 const Layout = ({ children }) => {
-  const [isContactVisible, setIsContactVisible] = useState(false)
+  const { isOpen, open } = useOpenCard(false)
+  // const [isContactVisible, setIsContactVisible] = useState(false)
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -108,7 +111,7 @@ const Layout = ({ children }) => {
       <PageContent className="page-content">
         <Main>{children}</Main>
       </PageContent>
-      <ContactButton onClick={() => setIsContactVisible(true)}>
+      <ContactButton onClick={open}>
         <h4>Contact Us</h4>
       </ContactButton>
       <Footer>
@@ -116,7 +119,7 @@ const Layout = ({ children }) => {
           ©{new Date().getFullYear()} Guardian Garage Doors
         </p>
       </Footer>
-      <Modal isVisible={isContactVisible} setIsVisible={setIsContactVisible}>
+      <Modal isVisible={isOpen} setIsVisible={open}>
         <h2>Contact Us</h2>
         <ContactForm>
           <input
