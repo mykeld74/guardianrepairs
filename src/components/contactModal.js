@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Styled from 'styled-components'
+import { useOpenCard } from '../hooks/useOpenCard'
 
 const Contact = Styled.div` 
   box-sizing: border-box;
@@ -55,13 +56,12 @@ const Response = Styled.div`
 `
 
 const ContactUs = () => {
-  const [isOpen, setIsOpen] = useState(false)
-  const toggle = () => setIsOpen(!isOpen)
+  const { isOpen, open } = useOpenCard(true)
 
   return (
-    <Contact onClick={toggle}>
+    <Contact onClick={open}>
       <div className="container">
-        <h2>Contact Us</h2>
+        <h2>Contact Me</h2>
       </div>
       {isOpen && (
         <Response>
