@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import styled from 'styled-components'
-import Img from 'gatsby-image'
+import Image from 'gatsby-image'
 import { useOpenCard } from '../hooks/useOpenCard'
 import { InfoContainer } from '../components/containers'
 
@@ -33,8 +33,36 @@ const DoorBlock = styled(motion.div)`
   border-radius: 20px;
   overflow: hidden;
   cursor: pointer;
+  position: relative;
+  .openImgContainer {
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+    @media (max-width: 500px) {
+      height: auto;
+    }
+  }
+  .closedImgContainer {
+    width: 100%;
+    height: 180px;
+  }
 `
 
+const Img = styled(Image)`
+  width: 100%;
+  height: 100%;
+  @media (min-width: 500px) {
+    &.openBg {
+      position: relative !important;
+      top: -200px;
+      height: auto;
+      overflow: hidden;
+      &.door490-491-2 {
+        top: -150px;
+      }
+    }
+  }
+`
 const Overlay = styled.div`
   background: rgba(0, 0, 0, 0.7);
   width: 100vw;
@@ -104,6 +132,7 @@ const Door = ({
   interior,
   windows,
   colors,
+  imgSlug,
 }) => {
   const { isOpen, open, bind } = useOpenCard(false)
 
@@ -114,8 +143,18 @@ const Door = ({
         animate={!isOpen ? 'closed' : 'active'}
         variants={door}
       >
-        <div className={`imgContainer`} key={divKey}>
-          <Img key={imgKey} alt={alt} fluid={fluid} />
+        <div
+          className={isOpen ? 'openImgContainer' : 'closedImgContainer'}
+          key={divKey}
+        >
+          <Img
+            key={imgKey}
+            alt={alt}
+            fluid={fluid}
+            className={
+              isOpen ? `door${imgSlug} openBg` : `door${imgSlug} closedBg`
+            }
+          />
         </div>
         <InfoContainer>
           <TitleBlock>

@@ -51,6 +51,7 @@ const GarageDoors = ({ doors }) => {
           interior={door.node.acf.interior_skin}
           windows={door.node.acf.window_options}
           colors={door.node.acf.available_colors}
+          imgSlug={door.node.featured_media.slug}
         />
       ))}
     </DoorWrapper>

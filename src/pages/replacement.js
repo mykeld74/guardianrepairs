@@ -42,6 +42,7 @@ export const query = graphql`
             window_options
           }
           featured_media {
+            slug
             localFile {
               childImageSharp {
                 fluid {
