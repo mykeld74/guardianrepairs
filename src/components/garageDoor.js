@@ -137,6 +137,22 @@ const GlassList = styled.ul`
 `
 const Features = styled.div``
 
+const door = {
+  hidden: {
+    scale: 0,
+    opacity: 0,
+    transition: {
+      duration: 0.25,
+    },
+  },
+  show: {
+    scale: 1,
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+    },
+  },
+}
 const Door = ({
   title,
   rValue,
@@ -154,7 +170,7 @@ const Door = ({
   const { isOpen, open } = useOpenCard(false)
 
   return (
-    <DoorContainer onClick={open}>
+    <DoorContainer onClick={open} initial="hidden" variants={door}>
       <DoorBlock>
         <div key={divKey}>
           <Img
