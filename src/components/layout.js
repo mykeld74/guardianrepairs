@@ -136,6 +136,20 @@ const Layout = ({ children }) => {
             placeholder="Subject"
             aria-label="Subject"
           />
+          <input
+            id="phone"
+            name="phone"
+            type="text"
+            placeholder="Phone Number"
+            aria-label="Phone Number"
+          />
+          <input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="Email"
+            aria-label="Email"
+          />
           <select name="service" defaultValue="tos">
             <option disabled value="tos">
               Type of service:
