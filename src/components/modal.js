@@ -17,7 +17,8 @@ const ModalContainer = Styled.div`
 
 const ModalOverlay = Styled(motion.div)`
   width: 100vw;
-  min-height: 400vh;
+  min-height: 450vh;
+  padding-bottom: 30px;
   background: rgba(255, 255, 255, 0.8);
   position: absolute;
   top: 0;

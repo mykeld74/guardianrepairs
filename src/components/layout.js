@@ -121,7 +121,7 @@ const Layout = ({ children }) => {
       </Footer>
       <Modal isVisible={isOpen} setIsVisible={open}>
         <h2>Contact Us</h2>
-        <ContactForm>
+        <ContactForm netlify>
           <input
             id="name"
             name="name"
