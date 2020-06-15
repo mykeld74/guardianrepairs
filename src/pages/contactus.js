@@ -1,9 +1,10 @@
 import React from 'react'
+import Layout from '../components/layout'
 
 const ContactUs = () => (
-  <>
+  <Layout>
     <h2>Contact Us</h2>
-    <form netlify name="contact">
+    <form netlify data-netlify="true" name="contact">
       <input
         id="name"
         name="name"
@@ -34,6 +35,6 @@ const ContactUs = () => (
       />
       <button type="submit">Submit</button>
     </form>
-  </>
+  </Layout>
 )
 export default ContactUs
