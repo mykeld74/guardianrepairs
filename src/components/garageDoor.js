@@ -199,32 +199,45 @@ const Door = ({
             <TitleBlock>
               <h2>{title}</h2>
             </TitleBlock>
-            <h3 className="blue">Available Colors</h3>
-            <ColorList>
-              {colors.map(color => (
-                <li key={color}>
-                  <DrColors colorOptions={color} />
-                  <p>{color}</p>
-                </li>
-              ))}
-            </ColorList>
-            <h3 className="blue">Window Options</h3>
-            <WindowList>
-              {windows.map(window => (
-                <li key={window} className={window}>
-                  <WindowStyle windowOptions={window} />
-                  <p>{window}</p>
-                </li>
-              ))}
-            </WindowList>
-            <GlassList>
-              {glass.map(glassType => (
-                <li key={glassType} className={glassType}>
-                  <GlassStyle glassOptions={glassType} />
-                  <p>{glassType}</p>
-                </li>
-              ))}
-            </GlassList>
+            {colors.length > 0 && (
+              <>
+                <h3 className="blue">Available Colors</h3>
+                <ColorList>
+                  {colors.map(color => (
+                    <li key={color}>
+                      <DrColors colorOptions={color} />
+                      <p>{color}</p>
+                    </li>
+                  ))}
+                </ColorList>
+              </>
+            )}
+            {windows.length > 0 && (
+              <>
+                <h3 className="blue">Window Options</h3>
+                <WindowList>
+                  {windows.map(window => (
+                    <li key={window} className={window}>
+                      <WindowStyle windowOptions={window} />
+                      <p>{window}</p>
+                    </li>
+                  ))}
+                </WindowList>
+              </>
+            )}
+            {glass.lenth > 0 && (
+              <>
+                <h3 className="blue">Glass Options</h3>
+                <GlassList>
+                  {glass.map(glassType => (
+                    <li key={glassType} className={glassType}>
+                      <GlassStyle glassOptions={glassType} />
+                      <p>{glassType}</p>
+                    </li>
+                  ))}
+                </GlassList>
+              </>
+            )}
             <h3 className="blue">Features</h3>
             <Features>
               <div>
