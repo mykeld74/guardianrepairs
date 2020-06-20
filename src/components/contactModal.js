@@ -60,9 +60,6 @@ const ContactUs = () => {
 
   return (
     <Contact onClick={open}>
-      <div className="container">
-        <h2>Contact Me</h2>
-      </div>
       {isOpen && (
         <Response>
           <div className="container">

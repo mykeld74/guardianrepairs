@@ -25,7 +25,11 @@ exports.createPages = ({ graphql, actions }) => {
       }
 
       result.data.allWordpressPage.edges.forEach(({ node }) => {
-        if (node.slug != 'home' && node.slug != 'replacement') {
+        if (
+          node.slug != 'home' &&
+          node.slug != 'replacement' &&
+          node.slug != 'free-estimates'
+        ) {
           createPage({
             path: node.slug,
             component: path.resolve('./src/templates/page.js'),

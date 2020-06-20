@@ -1,13 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import { Container } from '../components/containers'
 import GarageDoors from '../components/garageDoors'
 import SEO from '../components/seo'
-import { useOpenCard } from '../hooks/useOpenCard'
 
 const Replacement = ({ data }) => {
-  const { isOpen, open } = useOpenCard(false)
   return (
     <Layout>
       <SEO title={data.wordpressPage.title} />
