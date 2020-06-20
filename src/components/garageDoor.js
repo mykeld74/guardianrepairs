@@ -29,9 +29,6 @@ const DoorContainer = styled(motion.div)`
   background-color: #eee;
   border-radius: 20px;
   overflow: hidden;
-  @media (max-width: 500px) {
-    width: calc(100% - 40px);
-  }
 `
 const DoorBlock = styled(motion.div)`
   background: #eee;
