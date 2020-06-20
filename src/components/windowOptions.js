@@ -46,6 +46,15 @@ export const WindowStyle = ({ windowOptions }) => {
           }
         }
       }
+      somerton: wordpressWpMedia(slug: { eq: "somerton" }) {
+        localFile {
+          childImageSharp {
+            fluid(maxWidth: 500) {
+              ...GatsbyImageSharpFluid_tracedSVG
+            }
+          }
+        }
+      }
       stockbridge: wordpressWpMedia(slug: { eq: "stockbridge" }) {
         localFile {
           childImageSharp {
@@ -64,6 +73,15 @@ export const WindowStyle = ({ windowOptions }) => {
           }
         }
       }
+      stocktonArch: wordpressWpMedia(slug: { eq: "stockton_arch" }) {
+        localFile {
+          childImageSharp {
+            fluid(maxWidth: 500) {
+              ...GatsbyImageSharpFluid_tracedSVG
+            }
+          }
+        }
+      }
       waterton: wordpressWpMedia(slug: { eq: "waterton" }) {
         localFile {
           childImageSharp {
@@ -74,6 +92,15 @@ export const WindowStyle = ({ windowOptions }) => {
         }
       }
       williamsburg: wordpressWpMedia(slug: { eq: "williamsburg" }) {
+        localFile {
+          childImageSharp {
+            fluid(maxWidth: 500) {
+              ...GatsbyImageSharpFluid_tracedSVG
+            }
+          }
+        }
+      }
+      wyndbridge: wordpressWpMedia(slug: { eq: "wyndbridge" }) {
         localFile {
           childImageSharp {
             fluid(maxWidth: 500) {
@@ -101,14 +128,23 @@ export const WindowStyle = ({ windowOptions }) => {
     case 'Stockbridge':
       windowType = data.stockbridge.localFile.childImageSharp.fluid
       break
+    case 'Somerton':
+      windowType = data.somerton.localFile.childImageSharp.fluid
+      break
     case 'Stockton':
       windowType = data.stockton.localFile.childImageSharp.fluid
+      break
+    case 'Stockton Arch':
+      windowType = data.stocktonArch.localFile.childImageSharp.fluid
       break
     case 'Waterton':
       windowType = data.waterton.localFile.childImageSharp.fluid
       break
     case 'Williamsburg':
       windowType = data.williamsburg.localFile.childImageSharp.fluid
+      break
+    case 'Wyndbridge':
+      windowType = data.wyndbridge.localFile.childImageSharp.fluid
       break
     default:
       windowType = data.williamsburg.localFile.childImageSharp.fluid

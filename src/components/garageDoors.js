@@ -2,19 +2,27 @@ import React, { useRef } from 'react'
 import { motion } from 'framer-motion'
 import styled from 'styled-components'
 import Door from './garageDoor'
+
 const DoorWrapper = styled(motion.div)`
   box-sizing: border-box;
   background: #fff;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
   grid-gap: 40px;
   align-items: center;
   width: 100%;
   max-width: 1400px;
-  margin: auto;
+  margin: 0 auto 30px;
   padding: 0 40px;
   align-content: flex-start;
   justify-items: stretch;
+  .gridHeader {
+    grid-column: 1/-1;
+    h2 {
+      margin-bottom: 0;
+      text-decoration: underline;
+    }
+  }
   @media (max-width: 500px) {
     padding: 0 5px 40px;
   }
@@ -32,27 +40,40 @@ const staggerDoors = {
   hover: {},
   active: {},
 }
-const GarageDoors = ({ doors }) => {
+const GarageDoors = ({ doors, doorStyle }) => {
   const refs = useRef([])
   return (
-    <DoorWrapper variants={staggerDoors} initial="hidden" animate="show">
+    <DoorWrapper
+      variants={staggerDoors}
+      initial="hidden"
+      animate="show"
+      id={doorStyle}
+      ref={refs}
+    >
+      <div className="gridHeader">
+        <h2 className="blue">{doorStyle}</h2>
+      </div>
       {doors.map(door => (
-        <Door
-          key={door.node.wordpress_id}
-          ref={refs.current[door.node.wordpress_id]}
-          rValue={door.node.acf.r_value}
-          title={door.node.title}
-          divKey={door.node.featured_media.id}
-          imgKey={door.node.featured_media.id}
-          fluid={door.node.featured_media.localFile.childImageSharp.fluid}
-          alt={door.node.title}
-          doorType={door.node.acf.door_type}
-          glass={door.node.acf.glass_options}
-          interior={door.node.acf.interior_skin}
-          windows={door.node.acf.window_options}
-          colors={door.node.acf.available_colors}
-          imgSlug={door.node.featured_media.slug}
-        />
+        <>
+          {door.node.acf.door_style === doorStyle && (
+            <Door
+              key={door.node.wordpress_id}
+              ref={refs.current[door.node.wordpress_id]}
+              rValue={door.node.acf.r_value}
+              title={door.node.title}
+              divKey={door.node.featured_media.id}
+              imgKey={door.node.featured_media.id}
+              fluid={door.node.featured_media.localFile.childImageSharp.fluid}
+              alt={door.node.title}
+              doorType={door.node.acf.door_type}
+              glass={door.node.acf.glass_options}
+              interior={door.node.acf.interior_skin}
+              windows={door.node.acf.window_options}
+              colors={door.node.acf.available_colors}
+              imgSlug={door.node.featured_media.slug}
+            />
+          )}
+        </>
       ))}
     </DoorWrapper>
   )
