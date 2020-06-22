@@ -91,6 +91,10 @@ const Layout = ({ children }) => {
         </p>
       </Footer>
       <Modal isVisible={isOpen} setIsVisible={open}>
+        <h2>
+          Complete the form below or call or text us at:{' '}
+          <a href="tel:3039490688">303.949.0688</a>
+        </h2>
         <ContactForm />
       </Modal>
     </>

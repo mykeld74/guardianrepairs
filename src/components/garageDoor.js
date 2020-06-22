@@ -13,14 +13,18 @@ import GlassStyle from './glassOptions'
 const TitleBlock = styled.div`
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
   margin: 0;
   p {
-    transition: color 0.3s ease-in-out;
+    font-size: clamp(14px, 1.6vw, 20px);
+    margin-bottom: 10px;
+    transition: color 0.25s ease-in-out;
   }
-  p:hover {
-    color: red;
+  h2 {
+    font-size: clamp(20px, 4.5vw, 30px);
+    margin-bottom: 10px;
+    transition: color 0.25s ease-in-out;
   }
 `
 const DoorContainer = styled(motion.div)`
@@ -29,6 +33,12 @@ const DoorContainer = styled(motion.div)`
   background-color: #eee;
   border-radius: 20px;
   overflow: hidden;
+
+  &:hover {
+    .titleElement {
+      color: #1c628e;
+    }
+  }
 `
 const DoorBlock = styled(motion.div)`
   background: #eee;
@@ -179,8 +189,8 @@ const Door = ({
         </div>
         <InfoContainer>
           <TitleBlock>
-            <h2>{title}</h2>
-            {!isOpen && <p>Learn More</p>}
+            <h2 className="titleElement">{title}</h2>
+            {!isOpen && <p className="titleElement">Learn More</p>}
           </TitleBlock>
         </InfoContainer>
       </DoorBlock>

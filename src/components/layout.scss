@@ -44,10 +44,13 @@ template {
 a {
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
+  color: $blue;
+  transition: color 0.3s ease-in-out;
 }
 a:active,
 a:hover {
   outline-width: 0;
+  color: red;
 }
 abbr[title] {
   border-bottom: none;

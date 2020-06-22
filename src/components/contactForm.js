@@ -22,19 +22,26 @@ const Contact = styled.form`
     padding: 15px 10px;
   }
   button {
+    box-sizing: border-box;
     height: 60px;
     padding: 0;
     background: red;
     color: white;
     text-align: center;
     font-size: clamp(20px, 10vw, 32px);
+    border: 2px solid red;
     font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+    &:hover {
+      color: red;
+      background: #fff;
+    }
   }
 `
 
 const ContactForm = () => (
   <>
-    <h2>Contact Us</h2>
     <Contact
       netlify
       data-netlify="true"

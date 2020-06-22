@@ -8,7 +8,7 @@ const DoorWrapper = styled(motion.div)`
   box-sizing: border-box;
   background: #fff;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
   grid-gap: clamp(20px, 3vw, 40px);
   align-items: center;
   width: calc(100vw - 5vw);
@@ -26,8 +26,9 @@ const DoorWrapper = styled(motion.div)`
       justify-content: center;
       box-sizing: border-box;
       outline: none;
-      margin: 0 auto 0;
-      width: 80%;
+      margin: 0;
+      width: 100%;
+      max-width: 400px;
       background: #1c628e;
       color: #fff;
       height: 50px;
@@ -37,9 +38,7 @@ const DoorWrapper = styled(motion.div)`
       border: 3px solid #1c628e;
       border-radius: 10px;
       transition: all 0.25s ease-in-out;
-      @media (max-width: 500px) {
-        width: 100%;
-      }
+
       &:hover {
         background: #fff;
         color: #1c628e;
@@ -61,7 +60,9 @@ const DoorWrapper = styled(motion.div)`
   }
 `
 const staggerDoors = {
-  hidden: {},
+  hidden: {
+    transition: { staggerChildren: 0.075, staggerDirection: -1 },
+  },
   show: {
     transition: { staggerChildren: 0.075, staggerDirection: 1 },
   },
@@ -72,20 +73,19 @@ const GarageDoors = ({ doors, doorStyle }) => {
   const refs = useRef([])
   const { isOpen, open } = useOpenCard(false)
   return (
-    <DoorWrapper
-      variants={staggerDoors}
-      initial="hidden"
-      animate="show"
-      id={doorStyle}
-      ref={refs}
-    >
+    <DoorWrapper id={doorStyle} ref={refs}>
       <div className="gridHeader">
         <button onClick={open}>
           {doorStyle} <div className={isOpen ? 'rotate arrow' : 'arrow'}>❯</div>
         </button>
       </div>
       {isOpen && (
-        <>
+        <DoorWrapper
+          variants={staggerDoors}
+          initial="hidden"
+          animate="show"
+          exit="hidden"
+        >
           {doors.map(door => (
             <Fragment key={door.node.wordpress_id}>
               {door.node.acf.door_style === doorStyle && (
@@ -110,7 +110,7 @@ const GarageDoors = ({ doors, doorStyle }) => {
               )}
             </Fragment>
           ))}
-        </>
+        </DoorWrapper>
       )}
     </DoorWrapper>
   )
