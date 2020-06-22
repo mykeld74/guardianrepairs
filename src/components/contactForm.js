@@ -57,6 +57,7 @@ const ContactForm = () => (
         type="text"
         placeholder="Name"
         aria-label="Name"
+        required
       />
 
       <input
@@ -71,6 +72,7 @@ const ContactForm = () => (
         type="text"
         placeholder="Phone Number"
         aria-label="Phone Number"
+        required
       />
       <input
         id="email"
@@ -78,6 +80,7 @@ const ContactForm = () => (
         type="email"
         placeholder="Email"
         aria-label="Email"
+        required
       />
       <select name="service" defaultValue="tos">
         <option disabled value="tos">
@@ -92,6 +95,7 @@ const ContactForm = () => (
         name="message"
         placeholder="Message"
         aria-label="Your message here"
+        required
       />
       <button type="submit">Submit</button>
     </Contact>
