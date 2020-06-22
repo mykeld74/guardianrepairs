@@ -2,7 +2,15 @@ import * as React from 'react'
 import { motion } from 'framer-motion'
 import Styled from 'styled-components'
 
-const Path = props => <motion.path fill="transparent" strokeWidth="3" stroke="#fff" strokeLinecap="round" {...props} />
+const Path = props => (
+  <motion.path
+    fill="transparent"
+    strokeWidth="3"
+    stroke="#fff"
+    strokeLinecap="round"
+    {...props}
+  />
+)
 const Hamburger = Styled.button`
   outline: none;
   border: none;
@@ -19,7 +27,7 @@ const Hamburger = Styled.button`
   background: transparent;
 `
 export const MenuToggle = ({ toggle }) => (
-  <Hamburger onClick={toggle}>
+  <Hamburger onClick={toggle} aria-label="Menu toggle button">
     <svg width="32" height="32" viewBox="0 0 23 23">
       <Path
         variants={{
