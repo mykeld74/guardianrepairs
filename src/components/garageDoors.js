@@ -71,7 +71,7 @@ const staggerDoors = {
 }
 const GarageDoors = ({ doors, doorStyle }) => {
   const refs = useRef([])
-  const { isOpen, open } = useOpenCard(false)
+  const { isOpen, open } = useOpenCard(true)
   return (
     <DoorWrapper id={doorStyle} ref={refs}>
       <div className="gridHeader">

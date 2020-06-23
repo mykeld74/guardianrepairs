@@ -520,7 +520,10 @@ th {
   font-weight: bold;
 }
 li {
+  font-size: clamp(18px, 2vw, 28px);
+  line-height: 1.4;
   margin-bottom: calc(1.45rem / 2);
+  margin-left: 30px;
 }
 ol li {
   padding-left: 0;

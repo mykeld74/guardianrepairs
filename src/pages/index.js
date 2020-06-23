@@ -56,10 +56,10 @@ const IndexPage = ({ data }) => (
       <h3>What type of service do you need?</h3>
     </TextContainer>
     <IconContainer>
-      <Replace />
-      <Opener />
-      <Repair />
       <Estimate />
+      <Repair />
+      <Opener />
+      <Replace />
     </IconContainer>
   </Layout>
 )
