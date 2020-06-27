@@ -9,12 +9,22 @@ export const Container = styled.div`
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
+    @media (max-width: 500px) {
+      flex-wrap: wrap;
+    }
     .leftCol {
       width: 60%;
+      @media (max-width: 500px) {
+        width: 100%;
+      }
     }
     .rightCol {
       margin-left: 10%;
       width: 30%;
+      @media (max-width: 500px) {
+        width: 100%;
+        margin-left: 0;
+      }
     }
   }
 `

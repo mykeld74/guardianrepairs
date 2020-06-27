@@ -43,6 +43,12 @@ const sidebar = {
       damping: 40,
     },
   },
+  hidden: {
+    x: '100vw',
+  },
+  show: {
+    x: 0,
+  },
 }
 
 export const MotionNav = ({ menu }) => {
@@ -58,17 +64,16 @@ export const MotionNav = ({ menu }) => {
       ref={containerRef}
       variants={sidebar}
     >
-      <motion.div className="background" />
-      <motion.div variants={variants} className="navBlock">
-        {menu.map(item => (
-          <div className="navContainer" key={item.object_id}>
-            <MenuItem>
+      <motion.div className="background">
+        <motion.div variants={variants} className="navBlock">
+          {menu.map(item => (
+            <MenuItem key={item.object_id}>
               <StyledLink to={item.object_slug} key={item.object_id}>
                 {item.title}
               </StyledLink>
             </MenuItem>
-          </div>
-        ))}
+          ))}
+        </motion.div>
       </motion.div>
       <MenuToggle toggle={() => toggleOpen()} />
     </motion.nav>
