@@ -28,53 +28,51 @@ const StyledLink = styled(Link)`
 const sidebar = {
   open: () => ({
     clipPath: `circle(1800px at 40px 40px)`,
+    height: '100vh',
     transition: {
       type: 'spring',
-      stiffness: 20,
-      restDelta: 2,
+      stiffness: 400,
+      damping: 100,
+      duration: 1,
     },
   }),
   closed: {
     clipPath: 'circle(30px at 320px 40px)',
+    height: '90px',
+    overflow: 'hidden',
     transition: {
       delay: 0.5,
       type: 'spring',
       stiffness: 400,
       damping: 40,
+      duration: 1,
     },
-  },
-  hidden: {
-    x: '100vw',
-  },
-  show: {
-    x: 0,
   },
 }
 
 export const MotionNav = ({ menu }) => {
   const [isOpen, toggleOpen] = useCycle(false, true)
   const containerRef = useRef(null)
-  const { height } = 1000
+  // const { height } = 1000
 
   return (
     <motion.nav
       initial={false}
       animate={isOpen ? 'open' : 'closed'}
-      custom={height}
+      // custom={height}
       ref={containerRef}
       variants={sidebar}
     >
-      <motion.div className="background">
-        <motion.div variants={variants} className="navBlock">
-          {menu.map(item => (
-            <MenuItem key={item.object_id}>
-              <StyledLink to={item.object_slug} key={item.object_id}>
-                {item.title}
-              </StyledLink>
-            </MenuItem>
-          ))}
-        </motion.div>
+      <motion.div className="navBlock" variants={variants}>
+        {menu.map(item => (
+          <MenuItem key={item.object_id}>
+            <StyledLink to={item.object_slug} key={item.object_id}>
+              {item.title}
+            </StyledLink>
+          </MenuItem>
+        ))}
       </motion.div>
+
       <MenuToggle toggle={() => toggleOpen()} />
     </motion.nav>
   )
