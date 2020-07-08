@@ -2,6 +2,7 @@ import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
+import { Fish } from '../images/icons'
 
 const StyledHeader = styled.header`
   background: #000;
@@ -24,8 +25,12 @@ const Logo = styled(Link)`
 `
 
 const LogoSVG = styled.div`
-  width: clamp(80px, 15vw, 110px);
+  width: clamp(60px, 12vw, 110px);
   /* max-width: 110px; */
+  margin: 0 20px;
+`
+const FishContainer = styled.div`
+  width: clamp(40px, 8vw, 90px);
   margin: 0 20px;
 `
 
@@ -68,6 +73,9 @@ const Header = ({ siteTitle, siteDesc }) => (
         <h1 className="guardian">Guardian</h1>
         <h2 className="garageDoors">Garage Doors</h2>
       </LogoText>
+      <FishContainer>
+        <Fish />
+      </FishContainer>
     </Logo>
   </StyledHeader>
 )

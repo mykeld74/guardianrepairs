@@ -1,4 +1,5 @@
 import React from 'react'
+import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import { Container, ContactContainer } from '../components/containers'
 import ContactForm from '../components/contactForm'
