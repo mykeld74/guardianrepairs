@@ -10,7 +10,7 @@ import { Repair, Replace, Estimate, Opener } from '../images/icons'
 const HeroBanner = styled(BackgroundImage)`
   width: 100vw;
   height: 50vh;
-  background-position: 50% 15%;
+  background-position: 50% 95%;
   display: flex;
   align-items: center;
   color: #fff;
@@ -73,7 +73,7 @@ export const query = graphql`
         source_url
         localFile {
           childImageSharp {
-            fluid(maxHeight: 500) {
+            fluid(maxWidth: 2400) {
               ...GatsbyImageSharpFluid_withWebp
             }
           }
