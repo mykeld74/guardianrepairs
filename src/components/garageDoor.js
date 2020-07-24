@@ -232,7 +232,7 @@ const Door = ({
                 </WindowList>
               </>
             )}
-            {glass.lenth > 0 && (
+            {glass.length > 0 && (
               <>
                 <h3 className="blue">Glass Options</h3>
                 <GlassList>
