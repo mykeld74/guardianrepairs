@@ -29,7 +29,8 @@ exports.createPages = ({ graphql, actions }) => {
           node.slug != 'home' &&
           node.slug != 'replacement' &&
           node.slug != 'free-estimates' &&
-          node.slug != 'contact-us'
+          node.slug != 'contact-us' &&
+          node.slug != 'garage-door-openers'
         ) {
           createPage({
             path: node.slug,
