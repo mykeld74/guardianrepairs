@@ -135,7 +135,7 @@ const GlassList = styled.ul`
     justify-content: center;
     margin: 0 1% 20px 0;
     padding: 0;
-    width: clamp(24%, 200px, 32.3%);
+    width: clamp(14%, 200px, 32.3%);
     p {
       width: 100%;
       text-align: center;
