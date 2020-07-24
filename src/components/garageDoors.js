@@ -8,7 +8,7 @@ const DoorWrapper = styled(motion.div)`
   box-sizing: border-box;
   background: #fff;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  grid-template-columns: 1fr 1fr 1fr;
   grid-gap: clamp(20px, 3vw, 40px);
   align-items: center;
   width: calc(100vw - 5vw);
@@ -17,6 +17,12 @@ const DoorWrapper = styled(motion.div)`
   padding: 0;
   align-content: flex-start;
   justify-items: stretch;
+  @media (max-width: 1080px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (max-width: 650px) {
+    grid-template-columns: 1fr;
+  }
 
   .gridHeader {
     grid-column: 1/-1;
