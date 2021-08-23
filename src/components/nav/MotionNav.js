@@ -66,7 +66,7 @@ export const MotionNav = ({ menu }) => {
       <motion.div className="navBlock" variants={variants}>
         {menu.map(item => (
           <MenuItem key={item.object_id}>
-            <StyledLink to={item.object_slug} key={item.object_id}>
+            <StyledLink to={`/${item.object_slug}`} key={item.object_id}>
               {item.title}
             </StyledLink>
           </MenuItem>
